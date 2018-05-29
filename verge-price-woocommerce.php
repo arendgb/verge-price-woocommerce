@@ -54,17 +54,24 @@ function verge_custom_price($price, $product) {
 }
 add_filter('woocommerce_get_price', 'verge_custom_price', $product, 2);
 
-function XVG_currency( $currencies ) {
-     $currencies['XVG'] = __( 'XVG', 'woocommerce' );
+/**
+ * Custom currency and currency symbol
+ */
+add_filter( 'woocommerce_currencies', 'add_my_currency' );
+
+function add_verge_currency( $currencies ) {
+     $currencies['XVG'] = __( 'Currency name', 'woocommerce' );
      return $currencies;
 }
-add_filter( 'woocommerce_currencies', 'XVG_currency' );
 
-function XVG_currency_symbol( $currency_symbol, $currency ) {
+/**
+ * Change the currency symbol to XVG
+ */
+add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
+
+function change_existing_currency_symbol( $currency_symbol, $currency ) {
      switch( $currency ) {
-          case 'XVG': $currency_symbol = ' XVG'; break;
+          case 'USD': $currency_symbol = 'XVG'; break;
      }
      return $currency_symbol;
 }
-add_filter('woocommerce_currency_symbol', 'XVG_currency_symbol', 10, 2);
-?>

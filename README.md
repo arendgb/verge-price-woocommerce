@@ -4,3 +4,4 @@ This plugin will convert the USD price you put in your products details and conv
 This plugin is still in beta and is being tested, so usage is on own risk.
 
 You can download the plugin zip in the release section of this GitHub repo.
+https://github.com/arendgb/verge-price-woocommerce/releases
